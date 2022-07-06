@@ -10,13 +10,13 @@ private class TestOpportunityManagement {
     Test.stopTest();
 
     List<Opportunity> searchOppList = [
-      SELECT amount
+      SELECT amount, Amount_after_Discounted__c
       FROM Opportunity
       WHERE Id IN :newOpportunityList
     ];
 
     for (Opportunity opp : searchOppList) {
-      system.assertEquals(900000, opp.Amount, 'true');
+      system.assertEquals(900000, opp.Amount_after_Discounted__c, 'true');
     }
   }
 }

@@ -18,11 +18,9 @@ public with sharing class OpportunityManagement {
   }
 
   public static void applyDiscount(list<Opportunity> oppList) {
-    Opportunity errorOppn = new Opportunity();
     for (Opportunity opp : oppList) {
-      errorOppn.Id = opp.Id;
       Decimal disPercent = setDiscountPercentage(opp);
-      opp.Amount *= disPercent;
+      opp.Amount_after_Discounted__c = opp.Amount * disPercent;
     }
   }
 
