@@ -46,7 +46,7 @@ public with sharing class AccountManagement {
             StageName = 'Prospecting',
             CloseDate = System.today().addMonths(1),
             AccountId = accountObj.Id,
-            Amount =10000
+            Amount = 10000
           )
         );
       }
@@ -76,9 +76,8 @@ public with sharing class AccountManagement {
     List<Account> source
   ) {
     for (Account acc : source) {
-        acc.amount__c = 0;
+      acc.amount__c = 0;
       for (Opportunity opp : acc.Opportunities) {
-        
         acc.amount__c += opp.amount;
       }
     }
