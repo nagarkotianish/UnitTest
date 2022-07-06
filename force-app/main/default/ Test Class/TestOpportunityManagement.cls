@@ -14,8 +14,8 @@ private class TestOpportunityManagement {
       FROM Opportunity
       WHERE Id IN :newOpportunityList
     ];
+
     for (Opportunity opp : searchOppList) {
-      system.debug(opp.Amount);
       system.assertEquals(900000, opp.Amount, 'true');
     }
   }

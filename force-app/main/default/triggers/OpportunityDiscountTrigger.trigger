@@ -1,6 +1,4 @@
 trigger OpportunityDiscountTrigger on Opportunity(before insert) {
-  List<Opportunity> newOppList = new List<Opportunity>();
-  for (Opportunity opp : Trigger.new) {
-  }
+  List<Opportunity> newOppList = Trigger.new;
   OpportunityManagement.applyDiscount(newOppList);
 }
