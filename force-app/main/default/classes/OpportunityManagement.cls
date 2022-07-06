@@ -18,13 +18,12 @@ public with sharing class OpportunityManagement {
   }
   public static void applyDiscount(list<Opportunity> oppList) {
     for (Opportunity opp : oppList) {
-      Decimal discountPercent = setDiscountPercentage(opp);
-      if (discountPercent != 0) {
-        opp.Amount *= discountPercent;
-      }
+      Decimal disPercent = setDiscountPercentage(opp);
+      opp.Amount *= disPercent;
     }
   }
 
+  @TestVisible
   private static Decimal setDiscountPercentage(Opportunity opp) {
     Decimal discountPercent;
     if (isNewCustomer(opp)) {
@@ -35,11 +34,12 @@ public with sharing class OpportunityManagement {
     } else if (isAmountBig(opp)) {
       discountPercent = 0.95;
     } else {
-      discountPercent = 0;
+      discountPercent = 1;
     }
     return discountPercent;
   }
 
+  @TestVisible
   private static Boolean isNewCustomer(Opportunity opp) {
     if (opp.Type == 'New Customer') {
       return true;
@@ -47,6 +47,7 @@ public with sharing class OpportunityManagement {
     return false;
   }
 
+  @TestVisible
   private static Boolean isAmountBig(Opportunity opp) {
     Decimal amount = Decimal.valueOf('1000000');
     if (opp.Amount >= Amount) {
