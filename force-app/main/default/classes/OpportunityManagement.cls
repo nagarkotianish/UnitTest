@@ -23,7 +23,6 @@ public with sharing class OpportunityManagement {
       errorOppn.Id = opp.Id;
       Decimal disPercent = setDiscountPercentage(opp);
       opp.Amount *= disPercent;
-      opp.StageName = null;
     }
   }
 
