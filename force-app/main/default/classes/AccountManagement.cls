@@ -72,7 +72,7 @@ public with sharing class AccountManagement {
     return accountList;
   }
 
-  public static void calculateOpportunitesAmountRelatedtoAccount(
+  private static void calculateOpportunitesAmountRelatedtoAccount(
     List<Account> source
   ) {
     for (Account acc : source) {
